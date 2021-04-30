@@ -1,5 +1,6 @@
 .SUBTITLE "Seth Kushniryk"
 .TITLE "ECON ### Assignment #"
+.PDF_TITLE "ECON ### Assignment #"
 .PRINTSTYLE TYPESET
 .PAGE 8.5i 11i \" Printer sheet size
 .MISC "Mar. 17, 2021"
@@ -36,8 +37,7 @@
 .HEADING_STYLE 1 \
   SIZE +3 \
   BASELINE_ADJUST 2p
-.FAMILY U-P
-
+.FAMILY P
 
 .PDF_BOOKMARKS_OPEN 3
 
@@ -47,7 +47,7 @@
 delim ##
 .EN
 #
-define Lagrange % size +2 \F[ZCM]L\F[] %
+define Lagrange % size +2 "\F[ZCM]L\F[]" %
 define subdot % sub back 30 {size 24 .} %
 #
 \" For nice matrices:
@@ -63,14 +63,14 @@ Here are 3 link examples:
 
 .LIST roman3
 .ITEM
-"Internal" links are easy to include in documents. Here is a link to this section: 
+Internal links are easy to include in documents. Here is a link to this section: 
 .PDF_LINK links SUFFIX . "*"
 .ITEM
 Here's a link to a random target at the end of the document:
 .PDF_LINK end SUFFIX . "End"
 .ITEM
-Here's an external link to my website:
-.PDF_WWW_LINK https://sethkush.com SUFFIX . "sethkush.com"
+Here's an external link to the github repo for this template:
+.PDF_WWW_LINK https://github.com/sethkush/AssignmentTemplate SUFFIX . "gh:sethkush/AssignmentTemplate"
 .LIST OFF
 
 .HEADING 1 NAMED matrices "Matrices"
@@ -106,5 +106,80 @@ Or more traditionally:
 right ]
 .EN
 
+The dots could use a bit of tweaking, but they're currently good enough for the amount I use them.
+
+
+
+.HEADING 1 NAMED math "Math"
+
+I defined a quick macro to get a script "#Lagrange#" for lagrangians:
+.EQ
+Lagrange = left ( int from Omega c ( omega ) sup rho d omega right ) sup { 1 over rho } + lambda left ( wl - int from Omega p ( omega ) c ( omega ) d omega right )
+.EN
+
+I think equations look pretty good in Palatino:
+.EQ
+int from {a sup *} to inf left ( left ( a over {a sup *} right ) sup {{- rho} over {rho -1}} -1 right ) g(a)da+ {f sub x} over f int from {a sub x sup *} to inf left ( left ( a over {a sub x sup *} right ) sup {{- rho} over {rho -1}} -1 right ) g(a)da <= {f sub e} over wf
+.EN
+.EQ
+a sup * = left ( f over {f sub e} {1+ tau sup {- xi} left ( {f sub x} over f right ) sup {{-( xi (1- rho ) - rho )} over rho}} over {{xi (1- rho )- rho} over rho} right ) sup {1 over xi}
+.EN
+
+.HEADING 1 NAMED tables "Tables"
+
+Traditional tbl tables can be used:
+
+.TS
+tab(;) allbox;
+l c c c
+l c c c
+l c c c
+l c c c
+l c c c.
+;Tauchen;Rouwenhorst;True
+mean;4.000000;4.000000;4
+variance;78.182303;51.020408;51.0204
+skewness;-0.000000;0.000000;0
+kurtosis;-0.981094;2.800000;3
+.TE
+
+An alternative that might be easier to use is hdtbl:
+
+.TBL hal=c cols=4 bgc= bc=black fgc=black width='15%' cpd=0n
+.TR .TH .TH Tauchen .TH Rouwenhorst .TH True
+.TR .TD hal=r mean .TD 4.000000 .TD 4.000000 .TD 4
+.TR .TD hal=r variance .TD 78.182303 .TD 51.020408 .TD 51.0204
+.TR .TD hal=r skewness .TD -0.000000 .TD 0.000000 .TD 0
+.TR .TD hal=r kurtosis .TD -0.981094 .TD 2.800000 .TD 3
+.ETB
+
+
+
+I've used traditional tbl tables for game theory assignments:
+.TS
+center tab(;);
+c s s c s
+^ ^ ^ c c
+^ ^ ^ c c
+^ ^ ^ - -
+c c c | c | c |
+^ ^ ^ - -
+^ c c | c | c |
+^ ^ ^ - -.
+;I 
+;;;A;F
+;;;#q#;#1-q#
+;
+E;A;#p#;#3x smallover {3+x}#,#{3x+9} smallover {12+4x}#;-2,-1
+;
+;F;#1-p#;1,-2;-3,-1
+;
+.TE
+
+.HEADING 1 NAMED images "Images"
+
+Encapsulated Postscript (.eps) files can be included with ease.
+
+.PSPIC -L fig_f.eps 6.4i
 
 .PDF_TARGET end
