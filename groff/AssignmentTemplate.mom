@@ -1,0 +1,110 @@
+.SUBTITLE "Seth Kushniryk"
+.TITLE "ECON ### Assignment #"
+.PRINTSTYLE TYPESET
+.PAGE 8.5i 11i \" Printer sheet size
+.MISC "Mar. 17, 2021"
+\# Docstyle macros
+\#
+.DOCTYPE    DEFAULT
+.COPYSTYLE  FINAL
+\#
+\# Additional style macros--general type parameters
+\#
+.PRINTSTYLE   TYPESET
+.L_MARGIN 1i  
+.R_MARGIN 1i  
+.PT_SIZE      12
+.RW          .1
+.AUTOLEAD     1.5
+\#
+\# Additional style macros--change mom's default behaviour
+\#
+
+\#
+.HEADER_LEFT      "Seth Kushniryk"
+.SUBTITLE_SIZE     +1.5
+\# .AUTHOR_SIZE       +.5
+.DOCHEADER_LEAD    +2p
+.HEADER_SIZE       +1
+.PARA_INDENT       0P
+.QUOTE_INDENT      2
+.SMARTQUOTES
+.BLOCKQUOTE_STYLE \
+  INDENT 2 \
+  FAMILY H \
+  SIZE   -2
+.HEADING_STYLE 1 \
+  SIZE +3 \
+  BASELINE_ADJUST 2p
+.FAMILY U-P
+
+
+.PDF_BOOKMARKS_OPEN 3
+
+.START
+\" eqn setup:
+.EQ
+delim ##
+.EN
+#
+define Lagrange % size +2 \F[ZCM]L\F[] %
+define subdot % sub back 30 {size 24 .} %
+#
+\" For nice matrices:
+#
+define vdots % roman "\v'-.6m'\z.\v'.5m'\z.\v'.5m'.\v'-.4m'" %
+define ddots % roman "\v'-.6m' .\v'.5m' .\v'.5m' .\v'-.4m' " %
+#
+
+
+.HEADING 1 NAMED links "PDF Links"
+
+Here are 3 link examples:
+
+.LIST roman3
+.ITEM
+"Internal" links are easy to include in documents. Here is a link to this section: 
+.PDF_LINK links SUFFIX . "*"
+.ITEM
+Here's a link to a random target at the end of the document:
+.PDF_LINK end SUFFIX . "End"
+.ITEM
+Here's an external link to my website:
+.PDF_WWW_LINK https://sethkush.com SUFFIX . "sethkush.com"
+.LIST OFF
+
+.HEADING 1 NAMED matrices "Matrices"
+Matrices can be used in a variety of ways:
+
+In piecewise definitions:
+.EQ
+{partial u sub t} over {partial y sub s} = left "{" matrix { lcol {
+1 above {- gamma sub j} above 0
+} lcol {
+roman {"if "} t=s above
+roman {"if "} t=s-j~~\[fa]j\[mo]\[lC]1,...,P\[rC] above
+roman {"if "} t != s roman {" and "} t != s-j~~\[te] j \[mo] \[lC]1,...,P\[rC]
+}
+}
+.EN
+
+Or more traditionally:
+.EQ
+\[rA]J= left [ matrix { col {
+1 above {- gamma sub 1} above {- gamma sub 2} above vdots above {- gamma sub P} above 0
+} col {
+~ above 1 above {- gamma sub 1} above vdots above vdots above {- gamma sub P}
+} col {
+~ above ~ above 1 above ~ above ~ above ...
+} col {
+~ above ~ above ~ above ddots above ~ above {- gamma sub 2}
+} col {
+~ above bold 0 above ~ above ~ above ddots above {- gamma sub 1}
+} col {
+~ above ~ above ~ above ~ above ~ above 1
+}}
+right ]
+.EN
+
+
+.PDF_TARGET end
